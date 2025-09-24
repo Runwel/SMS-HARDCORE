@@ -1,4 +1,4 @@
-# SMS-HARDCORE-PRC
+# SMS-HARDCORE-PRC - **Work In Progress**
 A Student Management System demonstrating OOP principles and MVC architecture in PHP
 -The Student Management System a web based application designed to handle students and teachers data effectibely. It is a practice of building thru Object Oriented Programming (OOP) principles and MVC (Model-View-Controller) Architecture for clean and maintainable code.
 
@@ -19,6 +19,16 @@ A Student Management System demonstrating OOP principles and MVC architecture in
 - //Setup Admission page
 
 ## Installation
-- Clone the Repository:
+1. Clone the Repository:
   ```bash
-  git clone 
+  git clone https://github.com/Runwel/SMS-HARDCORE.git
+  ```
+2. Open the Project and Start building
+
+## Learning Notes
+- Practicing OOP and MVC architecture from scratch
+- Learning how to structure a project repository properly
+- Tracking development progress on GitHub
+
+## License 
+This project is licensed under the MIT License.
