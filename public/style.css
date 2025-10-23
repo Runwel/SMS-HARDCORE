@@ -1,3 +1,9 @@
 #error-message{
     color: red;
 }
+
+.step{ display: none;}
+
+.MsubmitBtn{
+    display: none;
+}

@@ -32,7 +32,7 @@ document.getElementById("signUp").addEventListener("submit", function(e){
     let formData = new FormData(this);
 
     $.ajax({
-        url: "./public/handler.php?action=signup",
+        url: "../public/index.php?action=signup",
         method: "POST",
         data: formData,
         processData: false,

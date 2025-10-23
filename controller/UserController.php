@@ -1,42 +1,47 @@
 <?php
 class UserController {
-    public function signup($data){
+    protected $validator, $userModel;
+
+    public function __construct(){   
+        $this->validator = new Validator;
+        $this->userModel = new User;
+    }
+
+    public function signup(array $data): void {
         $username = trim($data['username']);
         $email = trim($data['email']);
         $pwd = trim($data['pwd']);
         $pwdRepeat = trim($data['pwdRepeat']);
-        $errors = [];
 
-        if(empty($username) || empty($email) || empty($pwd) || empty($pwdRepeat)){
-            $errors[] = "All fields are required";
-        }
+        $this->validator->reset();
+        $this->validator->required($data, ['username', 'email', 'pwd', 'pwdRepeat']);
+        $this->validator->checkEmail($email);
+        $this->validator->passwordMatch($pwd, $pwdRepeat);
 
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errors[] = "Invalid email format!";
-        };
-
-        if($pwd !== $pwdRepeat){
-            $error[] = "Password do not match";
-        }
-
-        if(!empty($errors)){
-            echo json_encode(["success" => false, "errors" => $errors]);
+        if($this->validator->hasErrors()){
+            echo json_encode(["success" => false, "errors" => $this->validator->getErrors()]);
             return;
         }
 
         $pwdhashed = password_hash($pwd, PASSWORD_DEFAULT);
 
-        $user = new User();
-        if($user->checkUser($email)){
+        if($this->userModel->checkUser($email)){
             echo json_encode(["success" => false, "errors" => 'Email already existed']);
             return;
         }
         
-        if($user->createUser($username, $email, $pwdhashed)){
+        if($this->userModel->createUser($username, $email, $pwdhashed)){
             echo json_encode(["success" => true]);
         } else {
             echo json_encode(["success" => false, "errors" => 'Signup Failed. Try again']);
             return;
         }
+    }
+
+    public function login($data) {
+        $email = trim($data['email']);
+        $pwd = trim($data['password']);
+        
+        $this->validator->required($data, ['email','password']);
     }
 }

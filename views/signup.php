@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="../public/style.css">
 </head>
 <body>
     <form id="signUp">
@@ -18,5 +18,5 @@
         <button type="submit">Submit</button>
     </form>
 </body>
-<script src="public/js/signup.js"></script>
+<script src="../public/js/signup.js"></script>
 </html>
